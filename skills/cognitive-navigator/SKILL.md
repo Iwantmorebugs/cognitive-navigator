@@ -1,6 +1,6 @@
 ---
 name: cognitive-navigator
-description: Keeps you able to steer while the agent works fast. Maintains a visual map of where the work is, explains what things do in plain language before showing code, and presents decisions with the alternative they rejected — so you can still change direction instead of receiving a finished implementation you can no longer evaluate. Use for multi-step architecture, refactoring, integration and debugging work. Triggers: I'm lost, I don't follow, losing the thread, too technical, explain it simply, where are we, I don't understand, I don't want to be a spectator, me pierdo, no te sigo.
+description: "Keeps you able to steer while the agent works fast. Maintains a visual map of where the work is, explains what things do in plain language before showing code, and presents decisions with the alternative they rejected — so you can still change direction instead of receiving a finished implementation you can no longer evaluate. Use for multi-step architecture, refactoring, integration and debugging work. Trigger phrases — I'm lost, I don't follow, losing the thread, too technical, explain it simply, where are we, I don't understand, I don't want to be a spectator, me pierdo, no te sigo."
 ---
 
 # Cognitive Navigator
