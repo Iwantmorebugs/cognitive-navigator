@@ -34,6 +34,22 @@ connects past → present → future.
 every visual block to it. A map that says `WE ARE HERE` to a Spanish speaker
 adds friction at exactly the point where this skill is supposed to remove it.
 
+## When not to use this
+
+Small, mechanical or self-evident work: a rename, a typo, a one-line fix, a
+dependency bump, a formatting pass. Answer those directly.
+
+This is not modesty, it is the finding. Li et al. (arXiv 2604.07121) built a
+structured-context system and measured its cost: on short tasks the *interaction
+overhead exceeded the cognitive benefit*, and their interface cost new users
+between twenty minutes and two hours to learn. Structure is not free. Applied to
+work that does not need it, it is the same failure this skill exists to prevent
+— attention spent on the wrong thing.
+
+Scale the structure to the conceptual complexity, never to the amount of code
+touched. Fifteen files of mechanical rename need none of this; one line choosing
+a data format may need all of it.
+
 ---
 
 # 1. THE CORE LOOP
@@ -87,11 +103,20 @@ For non-trivial work, maintain a lightweight visual map.
 
 ✓ Understand problem
 ✓ Decide architecture
-→ Implement order creation    ← 📍 HERE
+✗ Scale the machine up         ← rejected in phase 2: cost recurs
+→ Implement order creation     ← 📍 HERE
 ○ Add error handling
 ○ Add tests
 ○ Validate complete flow
 ```
+
+Four states, not three: `✓ done · ✗ rejected · → here · ○ pending`.
+
+**Keep rejected options visible, with their reason.** An abandoned decision stays
+cognitively relevant: unmarked, it gets proposed again two hours later, by either
+of you. Li et al. (arXiv 2604.07121) observed the matching failure in long
+sessions — stale context does not go quiet, it actively interferes, and their
+users had to prune it by hand because nothing marked it as spent.
 
 At the current phase, zoom in:
 
@@ -417,11 +442,36 @@ What are we accepting?
 
 CONSEQUENCE
 What does this enable/change?
+
+HOW YOU'D KNOW THIS IS WRONG
+What would you observe if this decision turns out to be
+a mistake? Name something checkable, not a feeling.
 ```
 
 Do not silently introduce significant architecture.
 
 The user must be able to challenge the decision.
+
+**The last field is the one that does the work.** Fok & Weld (arXiv 2305.07722)
+find that explanations only help when they let the human *verify* the output —
+not when they merely narrate the reasoning. Kaufman et al. found programmers
+judged correct AI-generated assertions at 74% but incorrect ones at 49%, with
+the *same confidence* in both cases; natural-language explanations did not close
+that gap, and poor ones widened it while raising confidence further.
+
+So a well-written explanation can leave the user more confident and no better at
+catching the error. Naming what would falsify the decision hands them something
+to check instead of something to believe. Prefer a query they can run, a value
+they can look at, a symptom they would see:
+
+```text
+HOW YOU'D KNOW THIS IS WRONG
+  Rows appear with a timestamp earlier than the checkpoint.
+  One query answers it in ten seconds.
+```
+
+If you cannot name anything checkable, say so plainly — that is itself the most
+useful thing the user can learn about the decision.
 
 ---
 
@@ -681,23 +731,10 @@ The goal is **feedback**, not constant permission.
 When a meaningful decision is reached, make it understandable enough for
 the user to challenge it.
 
-```text
-📌 FEEDBACK POINT
-
-We are choosing A instead of B.
-
-WHY:
-...
-
-BENEFIT:
-...
-
-TRADE-OFF:
-...
-
-CONSEQUENCE:
-...
-```
+**Use the `🧠 DECISION` block from §7 and stop there.** Do not invent a second
+decision format for this section — one concept must have one shape, or the user
+loses the two-second recognition that makes these blocks work at all. A feedback
+point is simply a §7 block placed where the response ends.
 
 Do not ask "Do you approve?" mechanically.
 

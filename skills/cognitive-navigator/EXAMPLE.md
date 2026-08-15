@@ -26,6 +26,7 @@ Goal: reporting that keeps up as the data grows
 
 ✓ 1. Find out where the time actually goes
 ✓ 2. Add an index on the timestamp column
+✗ -- Scale the machine up      ← rejected in step 8, cost recurs
 → 3. Stop re-reading everything          ← 📍 HERE
 ○ 4. Alert when a run is late
 ○ 5. Backfill tooling
@@ -154,28 +155,38 @@ The usual mitigation is to re-read a small overlapping window (say, the last hou
 
 ## 8 · Feedback point  → §14
 
-```
-📌 FEEDBACK POINT
+Same block as `§7` — a feedback point is a decision placed where the response ends.
 
-We are adding a checkpoint rather than scaling the machine up.
+```
+🧠 DECISION
+
+PROBLEM      The run does not fit in its window, and the
+             gap widens every day.
+
+OPTIONS      A) checkpoint, process only what changed
+             B) bigger machine
+
+CHOICE       A.
 
 WHY          Scaling buys time proportional to money and
              runs out again. The checkpoint changes what
              the cost depends on.
 
 TRADE-OFF    Late-arriving rows can be missed, which the
-             old version made impossible. We are choosing
-             a correctness risk we can bound over a
+             old version made impossible. We take a
+             correctness risk we can bound over a
              performance ceiling we cannot.
-
-ALTERNATIVE  Bigger machine. One line of config, zero risk
-             today, and the same conversation again in a
-             year with more data in it.
 
 CONSEQUENCE  If "silently missing a row" is unacceptable
              for these figures, this is the wrong change
              and we should scale instead. That is a
              business question, not a technical one.
+
+HOW YOU'D KNOW THIS IS WRONG
+             Rows exist whose timestamp is earlier than a
+             checkpoint we already passed. One query over
+             last week answers it, and it is worth running
+             before we trust the first month of figures.
 ```
 
 That is enough to answer "go on", "wait, how often do rows actually arrive late?", or "no — for these numbers we cannot miss anything, buy the bigger machine".

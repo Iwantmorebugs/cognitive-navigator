@@ -30,6 +30,8 @@ So the skill does **not** slow the agent down. It does not add permission prompt
 | **Plain language before code** | What the thing *does*, in human steps, before any class or file is named |
 | **Zoom out on confusion** | If you say "I don't understand", it moves *back* through the abstraction levels. Never forward into more detail |
 | **Decisions show their alternative** | A choice presented without the option it rejected is an announcement, not a decision |
+| **And what would falsify them** | Every decision names something *checkable* that would show it was wrong. Explanations only help when they let you verify the output rather than admire the reasoning ([Fok & Weld 2024](https://arxiv.org/abs/2305.07722)); programmers judge incorrect AI output at chance level while feeling just as confident as when they are right |
+| **Rejected paths stay on the map** | Marked `✗` with their reason, so nobody re-proposes them two hours later ([Li et al. 2026](https://arxiv.org/abs/2604.07121)) |
 | **Need before pattern** | Never "we added a Repository because we use the Repository pattern". If the need cannot be named, the abstraction is probably unnecessary |
 
 ## When not to use it
@@ -40,7 +42,16 @@ It earns its keep on multi-step work where decisions accumulate: architecture, r
 
 ## How to tell whether it is working
 
-This is a behavioural skill, so it cannot be unit tested. But it is not unfalsifiable either — here are four checks, cheapest first.
+This is a behavioural skill, so it cannot be unit tested. But it is not unfalsifiable either.
+
+**Start with the one that cannot be faked.** Every other check below measures whether you *feel* oriented, and feeling oriented is precisely the thing that can go wrong: in one controlled study, 86 programmers judged correct AI-generated assertions at 74% and incorrect ones at 49% — chance — while reporting the same confidence either way. Natural-language explanations did not close the gap, and weak ones widened it while raising confidence further. A skill that produces explanations can therefore make things worse in a way that self-report will never reveal.
+
+**0. The planted-error test** *(the one that matters)*
+Have the agent make a decision that is deliberately wrong — a wrong trade-off, a wrong assumption, a rejected alternative that was actually the right one. Do you catch it?
+
+Run it with the skill and without. This measures whether you can still *intervene*, not whether you can recite the state. That is the whole claim.
+
+The remaining three are proxies, cheapest first. Treat them as necessary, not sufficient.
 
 **1. The out-of-context test** *(no human needed)*
 Take a single **substantive** response from the middle of a session — one that made a decision, changed behaviour, or introduced something. Show it to someone, or to another model, who has not seen the conversation. Ask: *where is this in the project, why is this step happening, and what comes next?*
