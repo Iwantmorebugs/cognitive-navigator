@@ -77,13 +77,30 @@ Give it something trivial. If a variable rename produces the full apparatus of m
 
 **v0.1 — low mileage.** The design is deliberate and argued, but it has not been run across many sessions or many people. If you use it, the four checks above are also how you would tell me it does not work.
 
+## Two skills, one repo
+
+```
+/cognitive-navigator     once, at the start of a session
+                         the full discipline — ~900 lines, paid once
+
+/cognitive-checkpoint     any time after that
+                         one snapshot and stop — ~50 lines
+```
+
+Invoking a skill injects its file into the conversation, where it stays. So the big one never needs re-invoking, and a mid-session "where are we?" should not re-pay for it. That is the entire reason the checkpoint is a separate file rather than an argument: an argument would reload the same 900 lines and leave you with two copies.
+
+The checkpoint is self-contained — it works even if you never loaded the main skill.
+
 ## Layout
 
 ```
-skills/cognitive-navigator/
-├── SKILL.md          the skill itself — 17 sections
-├── EXAMPLE.md        the core loop walked end to end (no framework, no DDD)
-└── TRACEABILITY.md   business → code, for work with a real domain layer
+skills/
+├── cognitive-navigator/
+│   ├── SKILL.md          the discipline — 17 sections
+│   ├── EXAMPLE.md        the core loop walked end to end (no framework, no DDD)
+│   └── TRACEABILITY.md   business → code, for work with a real domain layer
+└── cognitive-checkpoint/
+    └── SKILL.md          the snapshot, and nothing else
 ```
 
 `EXAMPLE.md` and `TRACEABILITY.md` are read on demand, so an ordinary session only pays for `SKILL.md`.
@@ -94,7 +111,15 @@ skills/cognitive-navigator/
 npx skills add Iwantmorebugs/cognitive-navigator
 ```
 
-Or copy `skills/cognitive-navigator/` into `~/.claude/skills/` (personal) or `.claude/skills/` (per project), then invoke with `/cognitive-navigator`.
+That installs both skills. Or copy the `skills/*/` directories into `~/.claude/skills/` (personal) or `.claude/skills/` (per project).
+
+To update an existing install:
+
+```bash
+npx skills update cognitive-navigator
+```
+
+Skills do not update themselves, and the skills.sh web page serves a cached snapshot that lags behind the repository — but installs always resolve the current version.
 
 ## License
 

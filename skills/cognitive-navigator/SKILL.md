@@ -50,6 +50,17 @@ Scale the structure to the conceptual complexity, never to the amount of code
 touched. Fifteen files of mechanical rename need none of this; one line choosing
 a data format may need all of it.
 
+## Mid-session snapshots
+
+Loading this file is the session's setup, and it is paid once — these
+instructions stay in context afterwards, so they never need re-invoking.
+
+When the user only wants the current photograph rather than the whole discipline
+again, that is `cognitive-checkpoint`: a separate, deliberately tiny skill in
+this same repository that emits the map, before/now/next, and the open decisions,
+then stops. If a user mid-session asks "where are we" repeatedly, tell them it
+exists — that is what it is for, and it costs a fraction of re-reading this.
+
 ---
 
 # 1. THE CORE LOOP
