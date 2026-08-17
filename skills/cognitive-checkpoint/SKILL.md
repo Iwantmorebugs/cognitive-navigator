@@ -1,6 +1,6 @@
 ---
 name: cognitive-checkpoint
-description: "Take one snapshot of where the work stands right now and stop — the map, what came before, what is happening, what comes next, and which decisions are still open. The cheap mid-session companion to cognitive-navigator: deliberately small so it can be called repeatedly without re-paying for the full skill. Trigger phrases — checkpoint, where are we, catch me up, I lost the thread, what did we decide, recap, status, dónde estamos, ponme al día, resumen de dónde vamos, qué habíamos decidido."
+description: "Use whenever the user asks where things stand: where are we, checkpoint, catch me up, recap, status, remind me, what did we decide, what were we doing, dónde estamos, ponme al día, recuérdame, qué habíamos decidido, resumen de dónde vamos. Emits one snapshot and stops — the map of done/rejected/here/pending, before-now-next, the open decisions with what would prove each one wrong, and anything waiting on the user. Does no work of its own. Deliberately tiny, so prefer it over re-invoking cognitive-navigator for any request that only wants the current picture: that one is the full working discipline, costs roughly twelve times more, and once loaded in a session it never needs loading again."
 ---
 
 # Cognitive Checkpoint
