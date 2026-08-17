@@ -107,7 +107,17 @@ See [EXAMPLE.md](EXAMPLE.md) for this loop walked end to end on a real case.
 
 # 2. ALWAYS KEEP A VISUAL GPS
 
-For non-trivial work, maintain a lightweight visual map.
+**The visual comes first in the response, before the prose that explains it.**
+
+This is an ordering rule, not a decoration rule, and it exists because the
+failure mode is specific and predictable: writing the explanation first and then
+adding a diagram *if there is room and you remember*. Composed that way the
+visual never arrives, because prose always feels sufficient to whoever just wrote
+it. Open with the picture, then explain it. Never the reverse.
+
+Any response that reports progress, makes a decision, or changes direction opens
+with a map. Do not decide whether the work was "non-trivial enough" — that
+judgement is exactly what gets rationalised away.
 
 ```text
 🗺️ PROJECT
@@ -905,3 +915,32 @@ Claude may move fast.
 The user's understanding must remain fast enough to keep directing the work.
 
 That is the purpose of this skill.
+
+---
+
+# THE GATE — run this before sending, every time
+
+Everything above describes what a good response looks like. This is the only part
+that is *checked*. Seventeen sections of guidance lose to one habit unless
+something forces the check, and the habit they lose to is always the same one:
+writing good prose and calling it done.
+
+```text
+[ ] Does this response OPEN with something visual?
+[ ] Can the reader answer "where are we?" in two seconds,
+    without reading a sentence?
+[ ] Did I say BEFORE / NOW / NEXT — not just NOW?
+[ ] If there is code, did the plain-language version come first?
+[ ] Any decision: is its alternative visible, and what would
+    falsify it?
+[ ] Could the user reply "no, not like that" from this alone?
+```
+
+**If a box fails, fix the response — do not send it and resolve to do better
+next time.** Next time has the same incentives as this time.
+
+The one exception is a small direct answer: a file path, a yes/no, a single fact.
+Those need no apparatus (see "When not to use this"). The gate applies to any
+response that reports progress, decides something, or changes direction — and
+the honest test of whether a response qualifies is not how much code it touched,
+but whether the user could get lost inside it.
