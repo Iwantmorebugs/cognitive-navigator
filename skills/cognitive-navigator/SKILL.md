@@ -5,6 +5,51 @@ description: "Keeps you able to steer while the agent works fast. Maintains a vi
 
 # Cognitive Navigator
 
+# THE GATE — read this first, apply it to every response
+
+The rest of this file explains *why*. This is the part that is **checked**.
+
+**Mechanical trigger, so there is nothing to judge:** if a response is longer
+than a few lines, it opens with something visual. Not "if the work was
+substantial" — that classification is exactly where compliance leaks away. Length
+is observable; importance is a judgement you will resolve in your own favour.
+
+```text
+[ ] Does this response OPEN with something visual?
+[ ] Can the reader answer "where are we?" in two seconds,
+    without reading a sentence?
+[ ] Did I say BEFORE / NOW / NEXT — not just NOW?
+[ ] If there is code, did the plain-language version come first?
+[ ] Any decision: is its alternative visible, and what would
+    falsify it?
+[ ] Could the user reply "no, not like that" from this alone?
+```
+
+**If a box fails, rewrite the response.** Do not send it while resolving to do
+better next time — next time has identical incentives to this one.
+
+Exempt: a genuinely small direct answer. A file path, a yes or no, one fact.
+Those need no apparatus.
+
+## Expect yourself to drift
+
+This is the honest part, and it matters more than the checklist above.
+
+You will follow this for the first few responses and then slide back into prose.
+Not by disagreeing with it — by forgetting it, while your attention is on the
+actual problem. The rationalisation always takes the same shape: *this particular
+response is mostly explanation, so the diagram would be redundant.*
+
+It is not redundant. Prose feels sufficient to whoever just wrote it and to
+nobody else. When that thought appears, treat it as the signal that the gate is
+being skipped, not as a reason it does not apply.
+
+The specific failure this prevents: writing the explanation first and adding a
+visual only if there is room and you remember. Composed in that order the visual
+never arrives. **Open with the picture, then explain it.**
+
+---
+
 ## Core objective
 
 The user is the feedback bottleneck.
@@ -107,17 +152,11 @@ See [EXAMPLE.md](EXAMPLE.md) for this loop walked end to end on a real case.
 
 # 2. ALWAYS KEEP A VISUAL GPS
 
-**The visual comes first in the response, before the prose that explains it.**
+**The visual comes first in the response, before the prose that explains it** —
+an ordering rule, not a decoration rule. See THE GATE at the top of this file for
+why, and for the trigger that decides when it applies.
 
-This is an ordering rule, not a decoration rule, and it exists because the
-failure mode is specific and predictable: writing the explanation first and then
-adding a diagram *if there is room and you remember*. Composed that way the
-visual never arrives, because prose always feels sufficient to whoever just wrote
-it. Open with the picture, then explain it. Never the reverse.
-
-Any response that reports progress, makes a decision, or changes direction opens
-with a map. Do not decide whether the work was "non-trivial enough" — that
-judgement is exactly what gets rationalised away.
+Here is what to open with.
 
 ```text
 🗺️ PROJECT
@@ -916,31 +955,5 @@ The user's understanding must remain fast enough to keep directing the work.
 
 That is the purpose of this skill.
 
----
-
-# THE GATE — run this before sending, every time
-
-Everything above describes what a good response looks like. This is the only part
-that is *checked*. Seventeen sections of guidance lose to one habit unless
-something forces the check, and the habit they lose to is always the same one:
-writing good prose and calling it done.
-
-```text
-[ ] Does this response OPEN with something visual?
-[ ] Can the reader answer "where are we?" in two seconds,
-    without reading a sentence?
-[ ] Did I say BEFORE / NOW / NEXT — not just NOW?
-[ ] If there is code, did the plain-language version come first?
-[ ] Any decision: is its alternative visible, and what would
-    falsify it?
-[ ] Could the user reply "no, not like that" from this alone?
-```
-
-**If a box fails, fix the response — do not send it and resolve to do better
-next time.** Next time has the same incentives as this time.
-
-The one exception is a small direct answer: a file path, a yes/no, a single fact.
-Those need no apparatus (see "When not to use this"). The gate applies to any
-response that reports progress, decides something, or changes direction — and
-the honest test of whether a response qualifies is not how much code it touched,
-but whether the user could get lost inside it.
+If you have read this far and remember one thing, let it be THE GATE at the top.
+Everything between it and here is elaboration.
